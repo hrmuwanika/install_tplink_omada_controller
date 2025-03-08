@@ -6,9 +6,10 @@
 # yum update
 yum update -y
 
-# Installl Java 11
-sudo yum -y install java-11-openjdk.x86_64
-sudo yum -y install http://repo.iotti.biz/CentOS/8/x86_64/apache-commons-daemon-jsvc-1.2.2-5.el8.lux.x86_64.rpm
+# Installl Java 17
+sudo yum install java-17-openjdk
+sudo wget http://repo.iotti.biz/CentOS/8/x86_64/apache-commons-daemon-jsvc-1.2.2-5.el8.lux.x86_64.rpm
+sudo rpm -Uvh apache-commons-daemon-jsvc-1.2.2-5.el8.lux.x86_64.rpm
 
 # Download mongodb
 cat <<"EOF" | tee /etc/yum.repos.d/mongodb-org-7.0.repo
