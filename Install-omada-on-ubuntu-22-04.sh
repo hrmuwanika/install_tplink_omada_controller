@@ -1,30 +1,40 @@
 #!/bin/bash
+
 # Info: run this script with sudo or as root user
 # It is recommended to update repository and upgrade system before installing dependencies and omada software controller:
-# 1. Update apt and upgrade system
-apt update && apt upgrade -y
 
-# 2. Install omada dependencies, mongodb deb package and jsvc build dependencies
-apt install -y openjdk-11-jdk-headless curl autoconf make gcc
+# 1. Update apt and upgrade system
+sudo apt update
+sudo apt upgrade -y
+sudo apt autoremove -y
+
+# 2. Install omada dependencies
+sudo apt install -y openjdk-11-jdk-headless curl 
 
 # 3. Install MongoDB
-wget https://repo.mongodb.org/apt/debian/dists/buster/mongodb-org/4.4/main/binary-amd64/mongodb-org-server_4.4.16_amd64.deb
-apt install -y ./mongodb-org-server_4.4.16_amd64.deb
+wget https://repo.mongodb.org/apt/debian/dists/bookworm/mongodb-org/7.0/main/binary-amd64/mongodb-org-server_7.0.17_amd64.deb
+sudo apt install -y ./mongodb-org-server_7.0.17_amd64.deb
 
-# 4. Compile and install jsvc
-mkdir -p /opt/tplink-sources && cd /opt/tplink-sources
-# install build dependencies
-# download source
-wget -c https://dlcdn.apache.org/commons/daemon/source/commons-daemon-1.3.1-src.tar.gz -O - | tar -xz 
-# configure and compile
-cd commons-daemon-1.3.1-src/src/native/unix
-sh support/buildconf.sh
-# "/usr/lib/jvm/java-11-openjdk-amd64" is the default installation path of OpenJDK-11.
-./configure --with-java=/usr/lib/jvm/java-11-openjdk-amd64
-make
-# Create a soft link from your JSVC path
-ln -s /opt/tplink-sources/commons-daemon-1.3.1-src/src/native/unix/jsvc /usr/bin/
+# 4. Install jsvc 
+sudo apt install -y jsvc
 
-# Download and install Omada Controller Software
-wget https://static.tp-link.com/upload/software/2022/202207/20220729/Omada_SDN_Controller_v5.4.6_Linux_x64.deb
-dpkg --ignore-depends=jsvc -i ./Omada_SDN_Controller_v5.4.6_Linux_x64.deb
+# Download and install Omada Controller Software from Tar
+# mkdir omada
+# wget https://static.tp-link.com/upload/software/2025/202501/20250109/Omada_SDN_Controller_v5.15.8.2_linux_x64.tar.gz
+# tar -xvzf Omada_SDN_Controller_v5.15.8.2_linux_x64.tar.gz -C omada
+# cd omada
+
+# sudo chmod +x install.sh
+# sudo ./install.sh
+
+# Download and install Omada Controller Software from deb
+wget https://static.tp-link.com/upload/software/2025/202501/20250109/Omada_SDN_Controller_v5.15.8.2_linux_x64.deb
+sudo dpkg -i Omada_SDN_Controller_v5.15.8.2_linux_x64.deb
+
+sudo apt install -y ufw
+sudo ufw enable
+sudo ufw allow 22/tcp
+sudo ufw allow 8088/tcp
+sudo ufw reload
+
+
