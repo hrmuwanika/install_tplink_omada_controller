@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Info: run this script with sudo or as root user
-# It is recommended to update repository and upgrade system before installing dependencies and omada software controller:
+# Omada software controller installed on Ubuntu 22.04
+# 
 
 # 1. Update apt and upgrade system
 sudo apt update
