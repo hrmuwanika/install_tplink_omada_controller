@@ -14,19 +14,17 @@ MYINSTALLERFOLDER=$(echo "${OMADATARGZ}" | sed 's/\.tar\.gz//') && echo "Omada i
 MYOMADAVERSION=$(echo "${OMADATARGZ}" | awk '{split($0,a,"_"); print a[4]}') && echo "Omada version: ${MYOMADAVERSION}"
 OMADADEST="/opt/tplink/EAPController"
 
-# Add mongodb repo
-cat <<"EOF" | tee /etc/yum.repos.d/mongodb-org-4.4.repo
-[mongodb-org-4.4]
-name=MongoDB 4.4 Repository
-baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/4.4/x86_64
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
-EOF
-
 # yum update
 yum update -y
-yum install -y java-1.8.0-openjdk-headless mongodb-org
+
+# Installl Java 11
+sudo yum install –y java-11-openjdk.x86_64
+
+# Install Jvsc
+
+# Download mongodb
+sudo wget https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.4/x86_64/RPMS/mongodb-org-4.4.29-1.el7.x86_64.rpm
+sudo rpm -ivh mongodb-org-4.4.29-1.el7.x86_64.rpm
 
 # download and install omada installer
 wget -c ${OMADAURL} -O - | tar -xz 
