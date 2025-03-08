@@ -14,6 +14,8 @@ sudo apt install -y openjdk-11-jdk-headless curl
 # 3. Install MongoDB
 wget https://repo.mongodb.org/apt/debian/dists/bookworm/mongodb-org/7.0/main/binary-amd64/mongodb-org-server_7.0.17_amd64.deb
 sudo apt install -y ./mongodb-org-server_7.0.17_amd64.deb
+sudo systemctl enable mongod
+sudo systemctl start mongod
 
 # 4. Install jsvc 
 sudo apt install -y jsvc
