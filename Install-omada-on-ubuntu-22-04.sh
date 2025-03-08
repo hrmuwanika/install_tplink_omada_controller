@@ -48,8 +48,8 @@ rm Omada_SDN_Controller_v5.15.8.2_linux_x64.deb
 sudo apt install -y ufw
 sudo ufw enable
 sudo ufw allow 22/tcp
-sudo ufw allow 8088,8043,8843,29811,29812,29814,27217/tcp comment "Omada Controller Ports"
-sudo ufw allow 29810/udp comment "Omada Controller UDP"
+sudo ufw allow 8088,8043,8843,29811,29812,29813,29814,29815,29816,27217/tcp comment "Omada Controller Ports"
+sudo ufw allow 19810,29810/udp comment "Omada Controller UDP"
 sudo ufw allow 80/tcp
 sudo ufw reload
 
