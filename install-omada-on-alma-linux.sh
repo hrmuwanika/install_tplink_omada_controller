@@ -37,12 +37,12 @@ firewall-cmd --zone=public --add-port=29814/tcp --permanent    # EAP Upgrades an
 firewall-cmd --reload
 
 # download and install omada installer
-wget -c https://static.tp-link.com/upload/software/2025/202501/20250109/Omada_SDN_Controller_v5.15.8.2_linux_x64.tar.gz -O - | tar -xz 
+wget -c https://static.tp-link.com/upload/software/2025/202508/20250802/Omada_SDN_Controller_v5.15.24.19_linux_x64_20250724152611.tar.gz -O - | tar -xz 
 
 # Make scripts and binaries executable    
-chmod +x Omada_SDN_Controller_v5.15.8.2_linux_x64/*.sh
-chmod +x Omada_SDN_Controller_v5.15.8.2_linux_x64/bin/*
+chmod +x Omada_SDN_Controller_v5.15.24.19_linux_x64/*.sh
+chmod +x Omada_SDN_Controller_v5.15.24.19_linux_x64/bin/*
 
 # Install omada controller, by default it is enabled on boot
-cd Omada_SDN_Controller_v5.15.8.2_linux_x64/
+cd Omada_SDN_Controller_v5.15.24.18_linux_x64/
 ./install.sh
