@@ -32,10 +32,10 @@ sudo apt install -y jsvc
 # rm -rf Omada_SDN_Controller_v5.15.8.2_Linux_x64/ && rm Omada_SDN_Controller_v5.15.8.2_Linux_x64.tar.gz
 
 # Download and install Omada Controller Software from deb
-wget https://static.tp-link.com/upload/software/2025/202501/20250109/Omada_SDN_Controller_v5.15.8.2_linux_x64.deb
-sudo dpkg -i Omada_SDN_Controller_v5.15.8.2_linux_x64.deb
+wget https://static.tp-link.com/upload/software/2025/202508/20250802/omada_v5.15.24.19_linux_x64_20250724152622.deb
+sudo dpkg -i omada_v5.15.24.19_linux_x64_20250724152622.deb
 
-rm Omada_SDN_Controller_v5.15.8.2_linux_x64.deb
+rm omada_v5.15.24.19_linux_x64_20250724152622.deb
 
 # Installing and configuring ufw firewall
 # 22 - SSH access
